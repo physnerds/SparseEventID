@@ -1,7 +1,5 @@
-from larcv import larcv
+import larcv
 import numpy
-
-
 
 
 def count_2d(file_name, product, producer):
@@ -12,7 +10,7 @@ def count_2d(file_name, product, producer):
 
     for i in range(io.get_n_entries()):
         io.read_entry(i)
-        image = larcv.EventSparseTensor2D.to_sparse_tensor(io.get_data("sparse2d", "sbndvoxels"))
+        image = larcv.EventSparseTensor2D.to_sparse_tensor(io.get_data("sparse2d", "dunevoxels"))
         for plane in [0,1,2]:
             voxel_counts[i][plane] = image.as_vector()[plane].size()
             meta = image.as_vector()[plane].meta()
@@ -43,7 +41,8 @@ def count_3d(file_name, product, producer):
     voxel_counts3d = numpy.zeros((io.get_n_entries(), 1))
     for i in range(io.get_n_entries()):
         io.read_entry(i)
-        image3d = larcv.EventSparseTensor3D.to_sparse_tensor(io.get_data("sparse3d", "sbndvoxels"))
+        image3d =io.get_data("sparse3d","dunevoxels")
+          #larcv.EventSparseTensor3D.to_sparse_tensor(io.get_data("sparse3d", "dunevoxels"))
         voxel_counts3d[i] = image3d.as_vector()[0].size()
 
         if i % 100 == 0:
@@ -62,6 +61,6 @@ def count_3d(file_name, product, producer):
 
 if __name__ == '__main__':
     # count_2d("data_files/out_2d_train_rand.h5", "sparse2d", "sbndvoxels")
-    count_3d("data_files/out_3d_train_rand.h5", "sparse3d", "sbndvoxels")
+    count_3d("../data/merged_sample_0.h5", "sparse3d", "dunevoxels")
 
 
