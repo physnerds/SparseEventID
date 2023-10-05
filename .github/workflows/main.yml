@@ -3,7 +3,7 @@ name: Doxygen Action
 on:
   push:
     branches:
-      - feature/polaris  # Modify to match your main branch name
+      - main  # Modify to match your main branch name
 
 jobs:
   build:
