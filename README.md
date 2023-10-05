@@ -1,5 +1,7 @@
 # Sparse Event ID
 
+Doxygen generated pages here: https://physnerds.github.io/SparseEventID/
+
 This repository contains a set of models that work on sparse data in pytorch. There are several dependencies for some models (Like Submanifold sparse convolutions)
 
 In general, all models share the same tools for IO, distributed training, saving and restoring, and doing evaluations of test, train, and inference steps.
