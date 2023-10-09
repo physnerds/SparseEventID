@@ -1,0 +1,44 @@
+{
+"primary": {
+  "Verbosity": 5, 
+  "EnableFilter": false, 
+  "NumThreads": 4, 
+  "InputFiles": ["/Users/amitbashyal/SparseEventID/data/merged_sample_0.h5"],
+  "NumBatchStorage": 4, 
+  "RandomSeed": 0, 
+  "RandomAccess": 0, 
+  "ProcessType": ["BatchFillerSparseTensor3D","BatchFillerPIDLabel","BatchFillerPIDLabel","BatchFillerPIDLabel","BatchFillerPIDLabel"],
+  "ProcessName": ["data","label_neut","label_prot","label_cpi","label_npi"],
+
+  "ProcessList": {
+    "data": {
+      "Verbosity": 3,
+      "TensorProducer": "dunevoxels",
+      "IncludeValues": true,
+      "MaxVoxels": 30000,
+      "UnfilledVoxelValue": -999,
+      "Augment": true
+    }
+,    "label_neut": {
+      "Verbosity": 3,
+      "ParticleProducer": "neutID",
+      "PdgClassList": [0,1,2]
+    }
+,    "label_prot": {
+      "Verbosity": 3,
+      "ParticleProducer": "protID",
+      "PdgClassList": [0,1,2]
+    }
+,    "label_cpi": {
+      "Verbosity": 3,
+      "ParticleProducer": "cpiID",
+      "PdgClassList": [0,1]
+    }
+,    "label_npi": {
+      "Verbosity": 3,
+      "ParticleProducer": "npiID",
+      "PdgClassList": [0,1]
+    }
+  }
+}
+}
